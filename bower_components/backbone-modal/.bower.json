@@ -1,0 +1,28 @@
+{
+  "name": "backbone.modal",
+  "main": "backbone.modal.js",
+  "version": "1.1.2",
+  "homepage": "https://github.com/awkward/backbone.modal",
+  "authors": [
+    "David van Leeuwen <david@madeawkward.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "examples/vendor",
+    "test",
+    "tests"
+  ],
+  "_release": "1.1.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.1.2",
+    "commit": "ed0d53461df141fbc6e4385e314c24b92f381cbf"
+  },
+  "_source": "git://github.com/awkward/backbone.modal.git",
+  "_target": "~1.1.2",
+  "_originalSource": "backbone-modal",
+  "_direct": true
+}

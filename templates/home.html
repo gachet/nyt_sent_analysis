@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+	{% if result.error %}
+		<h2> Error: {{result.error.message}}</h2> 
+	{% endif %} 
+	{% if result.user %}<br><br><br>
+		<h1>Welcome {{result.user.name}}!</h1>
+		<h2>Your id is: {{ result.user.id }}</h2>
+        <h2>Your email is: {{ result.user.email }}</h2>
+	{% endif %}
+{% endblock %}

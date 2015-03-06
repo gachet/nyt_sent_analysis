@@ -1,0 +1,9 @@
+body {
+	background-color: #ececec;
+}
+
+#nav-bar {
+	border-radius: 0;
+	padding: 5px;
+	margin: 0;
+}
