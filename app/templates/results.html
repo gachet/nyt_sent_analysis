@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<br><br>
+	<h2><b>Results:</b></h2>
+	<ul id="reviews">
+		{% for review in reviews['results'] %}
+				<li class='thumbnail'>
+					<div>
+						<a href="{{review['link']['url']}}">	
+							{% if review['multimedia'] %}
+								<img src="{{ review['multimedia']['resource']['src'] }}">
+							{% else %}
+								<img src="http://www.theblaze.com/wp-content/uploads/2013/05/NYTIMES_LOGO.jpg">
+							{% endif %}
+							<div>
+								{{ review['display_title'] }} 
+								{% if review['opening_date'] %}
+									({{ review['opening_date'][:4] }})
+								{% else %}
+									(N/A)
+								{% endif %}
+							</div>
+						</a>
+					<button class="btn btn-primary" id="analysis" href="{{review['link']['url']}}">Detailed Analysis</button>
+					<button type="button" class="btn btn-success"> 
+						<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+					</button>
+				</li>
+		{% endfor %}
+	</ul>
+	Page: 
+	{% for page in range(pages) %} <a href="">{{page + 1}}</a>{% endfor %}
+{% endblock %}
