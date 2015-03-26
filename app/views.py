@@ -5,9 +5,9 @@ from flask import Flask, Response, render_template, redirect, url_for, request, 
 from app import app
 from authomatic.adapters import WerkzeugAdapter
 from authomatic import Authomatic
-# from flask.ext.sqlalchemy import SQLAlchemy
 from uri import parse_query, get_movie_reviews, get_book_reviews
 import logging
+
 logging.basicConfig()
 
 # import CONFIG variables for OAuth
@@ -78,8 +78,4 @@ def scrape(keyword):
 	print response.text
 	# return json.dumps(response.text, indent=2)
 	return 'SUCCESS'
-
-
-# if __name__ == '__main__':
-# 	app.run(debug=True)
 
