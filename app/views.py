@@ -2,7 +2,7 @@
 
 import requests, json, scraper, ast
 from flask import Flask, Response, render_template, redirect, url_for, request, make_response, jsonify
-from app import app
+from app import app, db
 from models import User, Articles
 from authomatic.adapters import WerkzeugAdapter
 from authomatic import Authomatic
@@ -43,13 +43,18 @@ def login(provider_name):
 
 @app.route('/home')
 def home():
-	# query for the user data if user is already in db 
-	if User.query.filter_by(email=result.r.user.email).first() is None:
-		print 'no user by that name'
-		user = User(result.r.user.name, result.r.user.email)
-		print user 
+	db_user = User.query.filter_by(email=result.r.user.email).first()
+	# insert new user if he/she is not found in db 
+	if  db_user is None:
+		user = User(name=result.r.user.name, email=result.r.user.email)
+		db.session.add(user)
+		db.session.commit()
+		print user.email
+	# if user found, fetch his/her data
 	else:
+		found_user = User.query.filter_by(email=result.r.user.email).first()
 		print 'user exists'
+		print found_user.name
 	return render_template('home.html', result=result.r)
 
 
