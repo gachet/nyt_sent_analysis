@@ -3,12 +3,21 @@ from app import db
 # stores users
 class User(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
-	firstname = db.Column(db.String(100))
-	lastname = db.Column(db.String(100))
+	name = db.Column(db.String(100))
 	email = db.Column(db.String(120), unique=True)
+	authenticated = db.Column(db.Boolean, default=False)
 
+	def is_active(self):
+		return True
+
+	def get_email(self):
+		return self.email
+
+	def is_authenticated(self):
+		return self.authenticated
+	
 	def __repr__(self):
-		return '<User %r>' % (self.nickname)
+		return '<User %r>' % (self.name)
 
 # stores articles starred by users
 class Articles(db.Model):
